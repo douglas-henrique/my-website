@@ -5,7 +5,7 @@ import { memo } from 'react'
 
 const SocialLinks = () => {
   return (
-    <div className='max-[600px]:w-11/12 max-[600px]:flex-col max-[600px]:gap-2 max-[600px]:mt-10 h-auto md:w-auto flex md:flex-row gap-10 mt-2'>
+    <div className='max-[600px]:w-11/12 max-[600px]:gap-5 max-[600px]:mt-10 h-auto md:w-auto flex md:flex-row gap-10 mt-2 justify-between '>
       <Link href={`https://twitter.com/dougyoshii`}>
         <div className='flex flex-row gap-2 items-center p-1 rounded-md'>
           <FaTwitterSquare className='hover:cursor-pointer' size={24} />

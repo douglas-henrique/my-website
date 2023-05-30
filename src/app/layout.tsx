@@ -24,7 +24,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
 
       </Head>
-      <body className={`bg-gray-900 antialiased selection:bg-red-500/90 ${mont.className}`}>{children}</body>
+      <body className={`flex justify-center bg-gray-900 antialiased selection:bg-red-500/90 ${mont.className}`}>{children}</body>
     </html>
   )
 }

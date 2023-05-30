@@ -1,7 +1,7 @@
 "use client"
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent } from "react";
-
+import { FaHeart } from 'react-icons/fa'
 
 interface PostProps {
   post: {
@@ -12,6 +12,7 @@ interface PostProps {
     title: string
     readable_publish_date: string
     reading_time_minutes: number
+    public_reactions_count: number
   }
 }
 
@@ -33,7 +34,7 @@ export default function CardSpotlight({ post }: PostProps) {
 
   return (
     <div
-      className="group relative w-full rounded-xl border border-white/10 bg-slate-800 bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-11/12"
+      className="group relative max-w-3xl rounded-xl border border-white/10 bg-slate-800 bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -53,13 +54,22 @@ export default function CardSpotlight({ post }: PostProps) {
           {post.readable_publish_date}
         </h3>
         <div className="mt-2 flex items-center gap-x-2">
-          <span className="text-5xl max-[600px]:text-2xl font-bold  text-white">
+          <span className="text-3xl max-[600px]:text-2xl font-bold  text-white">
             {post.title}
           </span>
         </div>
         <p className="mt-6 leading-7 text-gray-300">
           {post.description}
         </p>
+
+        <div className="w-full h-12 mt-5 flex flex-row justify-between items-center ">
+          <label>{post.reading_time_minutes} min read</label>
+          {
+            post.public_reactions_count > 0 && ( 
+              <div className="flex flex-row items-center gap-2">{post.public_reactions_count} <FaHeart size={18} /></div>
+            )
+          }
+        </div>
       </div>
     </div>
   )

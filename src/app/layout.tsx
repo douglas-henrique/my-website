@@ -1,7 +1,7 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import Head from 'next/head'
-const inter = Inter({ subsets: ['latin'] })
+const mont = Montserrat({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Douglas Yoshi',
@@ -24,7 +24,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
 
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={`bg-gray-900 antialiased selection:bg-purple-500/90 ${mont.className}`}>{children}</body>
     </html>
   )
 }

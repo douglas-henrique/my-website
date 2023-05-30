@@ -26,9 +26,9 @@ export default async function PostsList() {
   const data = await getData();
 
   return (
-    <div className="max-[600px]:mt-20 
-    max-[600px]:w-full  h-auto 
-    flex flex-col items-center gap-6 
+    <div className="max-[600px]:mt-5
+    max-[600px]:m-8 h-auto 
+    flex flex-col items-center gap-6
     sm:w-full lg:w-10/12 2xl:w-8/12">
       {
         data.slice(0, 3).map((element: PostProps, index: number) => (

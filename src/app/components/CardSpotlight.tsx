@@ -34,7 +34,7 @@ export default function CardSpotlight({ post }: PostProps) {
 
   return (
     <div
-      className="group relative max-w-3xl rounded-xl border border-white/10 bg-slate-800 bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
+      className="group relative max-w-2xl rounded-xl border border-white/10 bg-slate-800 bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
       onMouseMove={handleMouseMove}
     >
       <motion.div

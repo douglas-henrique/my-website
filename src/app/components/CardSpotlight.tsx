@@ -2,22 +2,11 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent } from "react";
 import { FaHeart } from 'react-icons/fa'
+import type { PostProps as PostInterface } from "@/helpers/sharedTypes";
 
-interface PostProps {
-  post: {
-    id: string
-    description: string
-    url: string
-    social_image: string
-    title: string
-    readable_publish_date: string
-    reading_time_minutes: number
-    public_reactions_count: number
-  }
-}
+interface PostProps { post: PostInterface }
 
 export default function CardSpotlight({ post }: PostProps) {
-
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -65,7 +54,7 @@ export default function CardSpotlight({ post }: PostProps) {
         <div className="w-full h-12 mt-5 flex flex-row justify-between items-center ">
           <label>{post.reading_time_minutes} min read</label>
           {
-            post.public_reactions_count > 0 && ( 
+            post.public_reactions_count > 0 && (
               <div className="flex flex-row items-center gap-2">{post.public_reactions_count} <FaHeart size={18} /></div>
             )
           }

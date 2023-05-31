@@ -3,7 +3,7 @@ import CardSpotlight from "./CardSpotlight"
 import type { PostProps } from "@/helpers/sharedTypes";
 
 async function getData() {
-  const devToUrl = `${process.env.DEV_TO_API}/articles?username=dougyoshii`
+  const devToUrl = `${process.env.DEV_TO_API}/articles?username=${process.env.DEV_TO_USER}`
   const res = await fetch(devToUrl);
 
   if (!res.ok) {

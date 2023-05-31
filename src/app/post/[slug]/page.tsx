@@ -3,7 +3,7 @@ import type { PostProps } from "@/helpers/sharedTypes";
 import { Metadata } from 'next';
 
 async function getData(slug: string) {
-  const devToUrl = `${process.env.DEV_TO_API}/articles/dougyoshii/${slug}`
+  const devToUrl = `${process.env.DEV_TO_API}/articles/${process.env.DEV_TO_USER}/${slug}`
   const res = await fetch(devToUrl);
 
   if (!res.ok) {
@@ -26,6 +26,11 @@ export async function generateMetadata(
   return {
     title: data.title,
     metadataBase: new URL("https://www.dougdev.com.br"),
+    description: data.description,
+    keywords: ["React", "ReactJS", "NodeJS", "Typescript", "MySQL", "Postgres", "graphQL", "React Native", "Frontend", "Frontend developer", "Brazil", "Fullstack Developer"],
+    authors: [{ name: 'Douglas Yoshi' }],
+    creator: "Douglas Yoshi",
+    publisher: "Douglas Yoshi",
     openGraph: {
       images: [data.social_image],
       description: data.description,
@@ -33,10 +38,14 @@ export async function generateMetadata(
       url: 'https://www.dougdev.com.br/post/' + params.slug,
       title: data.title,
     },
+    twitter: {
+      images: [data.social_image],
+      card: 'summary_large_image',
+      title: data.title,
+      description: data.description,
+    }
   };
 }
-
-
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const data: PostFullProps = await getData(params.slug);

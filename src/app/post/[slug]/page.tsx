@@ -16,12 +16,15 @@ interface PostFullProps extends PostProps {
   body_html: string,
   tags: string[]
   positive_reactions_count: number
+  cover_image: string
 }
 
 
 export async function generateMetadata(
   { params }: { params: { slug: string } }): Promise<Metadata> {
   const data: PostFullProps = await getData(params.slug);
+
+  console.log(data)
 
   return {
     title: data.title,
@@ -32,14 +35,14 @@ export async function generateMetadata(
     creator: "Douglas Yoshi",
     publisher: "Douglas Yoshi",
     openGraph: {
-      images: [data.social_image],
+      images: [data.cover_image],
       description: data.description,
       type: 'article',
       url: 'https://www.dougdev.com.br/post/' + params.slug,
       title: data.title,
     },
     twitter: {
-      images: [data.social_image],
+      images: [data.cover_image],
       card: 'summary_large_image',
       title: data.title,
       description: data.description,

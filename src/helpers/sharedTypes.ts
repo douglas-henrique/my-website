@@ -7,4 +7,5 @@ export interface PostProps {
   readable_publish_date: string
   reading_time_minutes: number
   public_reactions_count: number
+  slug: string
 }

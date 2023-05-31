@@ -22,7 +22,7 @@ export default async function PostsList() {
     sm:w-full lg:w-10/12 2xl:w-8/12">
       {
         data.slice(0, 3).map((element: PostProps, index: number) => (
-          <Link key={index} href={`/post/${element.id}`}>
+          <Link key={index} href={`/post/${element.slug}`}>
             <CardSpotlight post={element} />
           </Link>
         ))

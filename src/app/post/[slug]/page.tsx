@@ -2,8 +2,8 @@ import MiniHeader from "@/app/components/MiniHeader"
 import type { PostProps } from "@/helpers/sharedTypes";
 import { Metadata, ResolvingMetadata } from 'next';
 
-async function getData(id: number) {
-  const devToUrl = `${process.env.DEV_TO_API}/articles/${id}`
+async function getData(slug: string) {
+  const devToUrl = `${process.env.DEV_TO_API}/articles/dougyoshii/${slug}`
   const res = await fetch(devToUrl);
 
   if (!res.ok) {
@@ -19,12 +19,11 @@ interface PostFullProps extends PostProps {
 }
 
 
-
 export async function generateMetadata(
-  { params }: { params: { id: string } },
+  { params }: { params: { slug: string } },
   parent?: ResolvingMetadata,
 ): Promise<Metadata> {
-  const data: PostFullProps = await getData(parseInt(params.id));
+  const data: PostFullProps = await getData(params.slug);
 
   return {
     title: data.title,
@@ -33,7 +32,7 @@ export async function generateMetadata(
       images: [data.social_image],
       description: data.description,
       type: 'article',
-      url: 'https://www.dougdev.com.br/post/' + params.id,
+      url: 'https://www.dougdev.com.br/post/' + params.slug,
       title: data.title,
     },
   };
@@ -41,8 +40,8 @@ export async function generateMetadata(
 
 
 
-export default async function Post({ params }: { params: { id: string } }) {
-  const data: PostFullProps = await getData(parseInt(params.id));
+export default async function Post({ params }: { params: { slug: string } }) {
+  const data: PostFullProps = await getData(params.slug);
   return (
     <main className={`flex w-full min-h-screen flex-col items-center p-5 `} >
       <MiniHeader />

@@ -35,14 +35,14 @@ export async function generateMetadata(
     creator: "Douglas Yoshi",
     publisher: "Douglas Yoshi",
     openGraph: {
-      images: [data.cover_image],
+      images: [data.social_image],
       description: data.description,
       type: 'article',
       url: 'https://www.dougdev.com.br/post/' + params.slug,
       title: data.title,
     },
     twitter: {
-      images: [data.cover_image],
+      images: [data.social_image],
       card: 'summary_large_image',
       title: data.title,
       description: data.description,

@@ -1,6 +1,6 @@
 import MiniHeader from "@/app/components/MiniHeader"
 import type { PostProps } from "@/helpers/sharedTypes";
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 
 async function getData(slug: string) {
   const devToUrl = `${process.env.DEV_TO_API}/articles/dougyoshii/${slug}`
@@ -20,9 +20,7 @@ interface PostFullProps extends PostProps {
 
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } },
-  parent?: ResolvingMetadata,
-): Promise<Metadata> {
+  { params }: { params: { slug: string } }): Promise<Metadata> {
   const data: PostFullProps = await getData(params.slug);
 
   return {

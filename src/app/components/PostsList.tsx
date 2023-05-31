@@ -14,6 +14,7 @@ async function getData() {
 
 export default async function PostsList() {
   const data = await getData();
+  console.log(data)
 
   return (
     <div className="max-[600px]:mt-5
@@ -21,7 +22,7 @@ export default async function PostsList() {
     flex flex-col items-center gap-6
     sm:w-full lg:w-10/12 2xl:w-8/12">
       {
-        data.slice(0, 3).map((element: PostProps, index: number) => (
+        data.map((element: PostProps, index: number) => (
           <Link key={index} href={`/post/${element.slug}`}>
             <CardSpotlight post={element} />
           </Link>

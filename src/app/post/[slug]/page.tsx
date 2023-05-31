@@ -24,8 +24,6 @@ export async function generateMetadata(
   { params }: { params: { slug: string } }): Promise<Metadata> {
   const data: PostFullProps = await getData(params.slug);
 
-  console.log(data)
-
   return {
     title: data.title,
     metadataBase: new URL("https://www.dougdev.com.br"),

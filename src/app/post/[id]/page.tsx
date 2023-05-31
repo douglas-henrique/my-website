@@ -1,5 +1,6 @@
 import MiniHeader from "@/app/components/MiniHeader"
 import type { PostProps } from "@/helpers/sharedTypes";
+import { Metadata, ResolvingMetadata } from 'next';
 
 async function getData(id: number) {
   const devToUrl = `${process.env.DEV_TO_API}/articles/${id}`
@@ -16,6 +17,28 @@ interface PostFullProps extends PostProps {
   tags: string[]
   positive_reactions_count: number
 }
+
+
+
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent?: ResolvingMetadata,
+): Promise<Metadata> {
+  const data: PostFullProps = await getData(parseInt(params.id));
+
+  return {
+    title: data.title,
+    metadataBase: new URL("https://www.dougdev.com.br"),
+    openGraph: {
+      images: [data.social_image],
+      description: data.description,
+      type: 'article',
+      url: 'https://www.dougdev.com.br/post/' + params.id,
+      title: data.title,
+    },
+  };
+}
+
 
 
 export default async function Post({ params }: { params: { id: string } }) {

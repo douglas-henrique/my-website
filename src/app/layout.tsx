@@ -1,7 +1,8 @@
+import AnimatedTabs from '@/components/AnimatedTabs'
 import './globals.css'
-import { Montserrat } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Head from 'next/head'
-const mont = Montserrat({ subsets: ['latin'] })
+const mont = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Douglas Yoshi',
@@ -22,9 +23,13 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-
       </Head>
-      <body className={`flex justify-center bg-gray-900 antialiased selection:bg-red-500/90 ${mont.className}`}>{children}</body>
+      <body className={`flex justify-center antialiased selection:bg-red-500/90 ${mont.className} `}>
+        <main className={`flex min-h-screen flex-col w-full overflow-hidden items-center	`} >
+          <AnimatedTabs />
+          {children}
+        </main>
+      </body>
     </html>
   )
 }

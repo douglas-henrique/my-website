@@ -16,15 +16,18 @@ export default function CardSpotlight({ post }: PostProps) {
     clientY,
   }: MouseEvent) {
     let { left, top } = currentTarget.getBoundingClientRect();
-
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
 
   return (
-    <div
-      className="group relative max-w-2xl rounded-xl border border-white/10 bg-slate-800 bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
+    <motion.div
+      className="group relative max-w-xl rounded-xl border border-white/10 bg-white bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
       onMouseMove={handleMouseMove}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+      whileHover={{ scale: 1.01}}
+
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
@@ -32,7 +35,7 @@ export default function CardSpotlight({ post }: PostProps) {
           background: useMotionTemplate`
             radial-gradient(
               650px circle at ${mouseX}px ${mouseY}px,
-              rgba(14, 165, 233, 0.15),
+              rgba(255, 133, 167, .25),
               transparent 80%
             )
           `,
@@ -43,16 +46,16 @@ export default function CardSpotlight({ post }: PostProps) {
           {post.readable_publish_date}
         </h3>
         <div className="mt-2 flex items-center gap-x-2">
-          <span className="text-3xl max-[600px]:text-2xl font-bold  text-white">
+          <span className="text-3xl max-[600px]:text-2xl font-bold text-black">
             {post.title}
           </span>
         </div>
-        <p className="mt-6 leading-7 text-gray-300">
+        <p className="mt-6 leading-7 text-black">
           {post.description}
         </p>
 
         <div className="w-full h-12 mt-5 flex flex-row justify-between items-center ">
-          <label>{post.reading_time_minutes} min read</label>
+          <label className="text-black">{post.reading_time_minutes} min read</label>
           {
             post.public_reactions_count > 0 && (
               <div className="flex flex-row items-center gap-2">{post.public_reactions_count} <FaHeart size={18} /></div>
@@ -60,6 +63,6 @@ export default function CardSpotlight({ post }: PostProps) {
           }
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

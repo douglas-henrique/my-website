@@ -1,4 +1,4 @@
-
+"use client"
 import Image from 'next/image'
 import SocialLinks from './SocialLinks'
 import Link from 'next/link'

@@ -1,4 +1,4 @@
-import MiniHeader from "@/app/components/MiniHeader"
+import MiniHeader from "@/components/MiniHeader"
 import type { PostProps } from "@/helpers/sharedTypes";
 import { Metadata } from 'next';
 

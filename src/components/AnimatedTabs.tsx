@@ -13,7 +13,8 @@ interface TabProps {
 let tabs: TabProps[] = [
   { id: "home", label: "Home", url: '/' },
   { id: "about", label: "About me", url: '/about' },
-  { id: "blog", label: "Blog", url: '/blog' }
+  { id: "blog", label: "Blog", url: '/blog' },
+  { id: "codes", label: "My codes", url: '/codes' }
 ];
 
 export default function AnimatedTabs() {

@@ -222,9 +222,4 @@ export default function Timeline() {
   } else {
     return <div>Loading..</div>
   }
-
-
-
-
-
 }

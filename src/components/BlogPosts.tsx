@@ -3,9 +3,37 @@ import { motion } from 'framer-motion';
 import CardSpotlight from '@/components/CardSpotlight';
 import type { PostProps } from "@/helpers/sharedTypes";
 import Link from 'next/link';
+import { FaHeart } from 'react-icons/fa'
+
+const CardBody = ({ post }: { post: PostProps }) => {
+  return (
+    <div>
+      <h3 className="font-semibold leading-7">
+        {post.readable_publish_date}
+      </h3>
+      <div className="mt-2 flex items-center gap-x-2">
+        <span className="text-3xl max-[600px]:text-2xl font-bold text-black">
+          {post.title}
+        </span>
+      </div>
+
+      <p className="mt-6 leading-7 text-black">
+        {post.description}
+      </p>
+
+      <div className="w-full h-12 mt-5 flex flex-row justify-between items-center ">
+        <label className="text-black">{post.reading_time_minutes} min read</label>
+        {
+          post.public_reactions_count > 0 && (
+            <div className="flex flex-row items-center gap-2">{post.public_reactions_count} <FaHeart size={18} /></div>
+          )
+        }
+      </div>
+    </div>
+  )
+}
 
 export default function BlogPosts({ posts }: { posts: PostProps[] }) {
-
   return (
     <motion.div className='flex flex-col w-8/12 p-10 pl-20 max-[600px]:w-full max-[600px]:p-5 '
       initial={{ opacity: 0 }}
@@ -17,7 +45,9 @@ export default function BlogPosts({ posts }: { posts: PostProps[] }) {
         {
           posts.map((element: PostProps, index: number) => (
             <Link key={index} href={`/blog/post/${element.slug}`}>
-              <CardSpotlight post={element} />
+              <CardSpotlight>
+                <CardBody post={element} />
+              </CardSpotlight>
             </Link>
           ))
         }

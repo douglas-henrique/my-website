@@ -40,12 +40,14 @@ export async function generateMetadata(
     creator: "Douglas Yoshi",
     publisher: "Douglas Yoshi",
     openGraph: {
+      images: ['/avatar.png'],
       description: gist.description,
       type: 'article',
       url: 'https://www.dougdev.com.br/codes/' + params.id,
       title: file.filename + ' - Douglas Yoshi',
     },
     twitter: {
+      images: ['/avatar.png'],
       card: 'summary_large_image',
       title: file.filename + ' - Douglas Yoshi',
       description: gist.description,

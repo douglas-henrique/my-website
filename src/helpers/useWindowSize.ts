@@ -4,9 +4,8 @@ interface WindowProps {
   width: number
   height: number
 }
-// Hook
-function useWindowSize() {
 
+function useWindowSize() {
   const [windowSize, setWindowSize] = useState<WindowProps>({
     width: 0,
     height: 0

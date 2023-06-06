@@ -1,8 +1,6 @@
 "use client"
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-// import { useRouter } from 'next/router';
 
 interface TabProps {
   id: string
@@ -20,10 +18,7 @@ let tabs: TabProps[] = [
 export default function AnimatedTabs() {
   const router = useRouter();
   const pathname = usePathname();
-
-  const handleClick = (tab: TabProps) => {
-    router.push(tab.url)
-  }
+  const handleClick = (tab: TabProps) => router.push(tab.url)
 
   return (
     <motion.div className="flex space-x-1 mt-10" initial={{ opacity: 0 }}

@@ -1,5 +1,25 @@
 import CardSpotlight from '@/components/CardSpotlight'
 import Link from 'next/link'
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Gist Codes | Douglas Yoshi - Fullstack developer, frontend specialist",
+  description: "Here you can fine some usable examples to make your day easier",
+  metadataBase: new URL("https://www.dougdev.com.br/codes"),
+  openGraph: {
+    images: ['/avatar.png'],
+    description: "Here you can fine some usable examples to make your day easier",
+    type: 'website',
+    url: 'https://www.dougdev.com.br/codes',
+    title: "Gist Codes | Douglas Yoshi - Fullstack developer, frontend specialist",
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Gist Codes | Douglas Yoshi - Fullstack developer, frontend specialist",
+    images: ['/avatar.png'],
+    description: "Here you can fine some usable examples to make your day easier",
+  }
+};
 
 interface GistProps {
   id: number
@@ -11,6 +31,8 @@ interface GistProps {
   }
   description: string
 }
+
+
 
 const getGists = async () => {
   const request = await fetch('https://api.github.com/users/douglas-henrique/gists', { method: 'GET' })
@@ -28,7 +50,7 @@ export default async function Codes() {
   return (
     <div className="p-10">
       <h3 className="font-bold text-xl">My codes on Gist 🧑🏻‍💻</h3>
-      <p className="my-2">Here you can fine some usable examples to make your day easier </p>
+      <p className="my-2">Here you can find some usable examples to make your day easier </p>
       <div className="grid grid-cols-2 gap-4 mt-5 max-[600px]:grid-cols-1">
         {gists.map(element => {
           const file = Object.values(element.files)[0]

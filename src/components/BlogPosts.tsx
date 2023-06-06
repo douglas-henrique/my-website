@@ -1,25 +1,20 @@
 "use client"
 import { motion } from 'framer-motion';
-import CardSpotlight from '@/components/CardSpotlight';
-import type { PostProps } from "@/helpers/sharedTypes";
-import Link from 'next/link';
 import { FaHeart } from 'react-icons/fa'
+import CardSpotlight from '@/components/CardSpotlight';
+import Link from 'next/link';
+import type { PostProps } from "@/helpers/sharedTypes";
+
 
 const CardBody = ({ post }: { post: PostProps }) => {
   return (
     <div>
-      <h3 className="font-semibold leading-7">
-        {post.readable_publish_date}
-      </h3>
+      <h3 className="font-semibold leading-7"> {post.readable_publish_date} </h3>
       <div className="mt-2 flex items-center gap-x-2">
-        <span className="text-3xl max-[600px]:text-2xl font-bold text-black">
-          {post.title}
-        </span>
+        <span className="text-3xl max-[600px]:text-2xl font-bold text-black"> {post.title} </span>
       </div>
 
-      <p className="mt-6 leading-7 text-black">
-        {post.description}
-      </p>
+      <p className="mt-6 leading-7 text-black"> {post.description} </p>
 
       <div className="w-full h-12 mt-5 flex flex-row justify-between items-center ">
         <label className="text-black">{post.reading_time_minutes} min read</label>

@@ -2,24 +2,16 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link'
 import { Disclosure } from '@headlessui/react'
-import { useEffect, useState} from 'react'
 
+import useWindowSize from '@/helpers/useWindowSize';
 export default function Timeline() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { width } = useWindowSize()
 
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+  if (typeof window === undefined) {
+    return <div>Loading</div>
+  }
 
-    window.addEventListener('resize', handleWindowResize);
-
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  });
-
-  if (windowWidth > 600) {
+  if (width > 600) {
     return (
       <motion.div className="container mx-auto w-8/12 h-full max-[600px]:w-full max-[600px]:mt-20 " initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -128,7 +120,7 @@ export default function Timeline() {
         </div>
       </motion.div>
     )
-  } else {
+  } else if (width > 0 && width < 600) {
     return (
       <div className="w-full px-4 pt-16 text-center pb-10">
         <h1 className='text-2xl font-bold'>My experiences </h1>
@@ -227,6 +219,12 @@ export default function Timeline() {
         </div>
       </div>
     )
+  } else {
+    return <div>Loading..</div>
   }
+
+
+
+
 
 }

@@ -33,7 +33,7 @@ export async function generateMetadata(
   const file = Object.values(gist.files)[0]
 
   return {
-    title: file.filename,
+    title: file.filename + ' - Douglas Yoshi',
     metadataBase: new URL("https://www.dougdev.com.br"),
     description: gist.description,
     authors: [{ name: 'Douglas Yoshi' }],

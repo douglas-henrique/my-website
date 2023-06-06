@@ -1,4 +1,3 @@
-import MiniHeader from "@/components/MiniHeader"
 import type { PostProps } from "@/helpers/sharedTypes";
 import { Metadata } from 'next';
 
@@ -52,7 +51,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const data: PostFullProps = await getData(params.slug);
   return (
     <main className={`flex w-full min-h-screen flex-col items-center p-5 `} >
-      <MiniHeader />
       <div className="w-6/12 h-auto p-5 mt-5 2xl:w-5/12 sm:w-10/12 max-[600px]:w-full">
         <div className="w-full h-11 flex flex-row items-center gap-5">
           <label>{data.reading_time_minutes} min read</label>

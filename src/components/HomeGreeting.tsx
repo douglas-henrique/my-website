@@ -7,7 +7,7 @@ export default function HomeGreeting() {
   
   return (
     <motion.div
-      className='h-56 flex flex-col w-6/12 justify-center p-10 mt-10  '
+      className='h-56 flex flex-col w-6/12 justify-center p-10 mt-10 max-[600px]:w-full max-[600px]:mt-20'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}  >

@@ -1,8 +1,12 @@
-import AnimatedTabs from '@/components/AnimatedTabs'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Image from 'next/image'
 import Head from 'next/head'
 const mont = Inter({ subsets: ['latin'] })
+import { useRouter } from 'next/router';
+
+
+import AnimatedTabs from '@/components/AnimatedTabs'
 
 export const metadata = {
   title: 'Douglas Yoshi',
@@ -26,6 +30,8 @@ export default function RootLayout({
       </Head>
       <body className={`flex justify-center antialiased selection:bg-red-500/90 ${mont.className} `}>
         <main className={`flex min-h-screen flex-col w-full overflow-hidden items-center	`} >
+          <Image alt='Avatar image' className='rounded-full mt-32 max-[600px]:mt-20' width={150} height={150} src='/avatar.png' />
+          <h1 className='text-4xl font-bold mt-5'>Douglas Yoshi</h1>
           <AnimatedTabs />
           {children}
         </main>

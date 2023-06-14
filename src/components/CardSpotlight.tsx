@@ -2,7 +2,7 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { MouseEvent, ReactNode } from "react";
 
-export default function CardSpotlight({ children }: { children: ReactNode }) {
+export default function CardSpotlight({ children, classes }: { children: ReactNode, classes? : string }) {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
 
@@ -18,7 +18,7 @@ export default function CardSpotlight({ children }: { children: ReactNode }) {
 
   return (
     <motion.div
-      className="group relative max-w-xl rounded-xl border border-white/10 bg-white bg-opacity-40 px-8 py-9 shadow-2xl max-[600px]:w-full"
+      className={`group relative max-w-xl h-full rounded-xl border border-white/10 bg-white bg-opacity-10 px-8 p-5 shadow-2xl max-[600px]:w-full ${classes}`}
       onMouseMove={handleMouseMove}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -30,8 +30,8 @@ export default function CardSpotlight({ children }: { children: ReactNode }) {
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(255, 133, 167, .25),
+              300px circle at ${mouseX}px ${mouseY}px,
+              rgba(167, 15, 58, 0.25),
               transparent 80%
             )
           `,

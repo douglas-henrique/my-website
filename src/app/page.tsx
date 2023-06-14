@@ -33,10 +33,6 @@ const getRepos = async () => {
 
 export default async function Home() {
   const repos = await getRepos();
-  return (
-    <div className='w-8/12 max-[600px]:w-full'>
-      <HomeGreeting />
-      <GithubRepos repos={repos} />
-    </div>
-  )
+  
+  return <HomeGreeting />
 }

@@ -48,8 +48,8 @@ export default async function Codes() {
   const gists: GistProps[] = await getGists()
 
   return (
-    <div className="p-10">
-      <h3 className="font-bold text-xl">My codes on Gist 🧑🏻‍💻</h3>
+    <section className="p-10 w-7/12 max-[600px]:w-full">
+      <h3 className="font-bold text-4xl">My codes on Gist 🧑🏻‍💻</h3>
       <p className="my-2">Here you can find some usable examples to make your day easier </p>
       <div className="grid grid-cols-2 gap-4 mt-5 max-[600px]:grid-cols-1">
         {gists.map(element => {
@@ -66,6 +66,6 @@ export default async function Codes() {
         }
         )}
       </div>
-    </div>
+    </section>
   )
 }

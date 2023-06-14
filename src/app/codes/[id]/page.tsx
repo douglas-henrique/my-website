@@ -60,11 +60,11 @@ export default async function Code({ params }: { params: { id: string } }) {
   const file = Object.values(gist.files)[0]
 
   return (
-    <div className="p-10 w-8/12 max-[600px]:w-full">
-      <h3 className="font-bold text-xl">{file.filename} - Gist Code</h3>
+    <div className="p-10 w-8/12 max-[600px]:w-full overflow-auto">
+      <h3 className="font-bold text-3xl">{file.filename} - Gist Code</h3>
       <p className="my-5">{gist.description}</p>
       <CodeBlock text={file.content} language={file.language} />
-      <Link href={gist.html_url} className="py-5 text-red-700">See code on github 👀</Link>
+      <Link href={gist.html_url} className="py-5 text-white-700 mt-16">See code on github 👀</Link>
     </div>
   )
 }

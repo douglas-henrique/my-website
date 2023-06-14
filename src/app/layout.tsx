@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 const mont = Inter({ subsets: ['latin'] })
 import { useRouter } from 'next/router';
-
+import SocialLinks from '@/components/SocialLinks'
 
 import AnimatedTabs from '@/components/AnimatedTabs'
 
@@ -28,13 +28,10 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-      <body className={`flex justify-center antialiased selection:bg-red-500/90 ${mont.className} `}>
-        <main className={`flex min-h-screen flex-col w-full overflow-hidden items-center	`} >
-          <Image alt='Avatar image' className='rounded-full mt-32 max-[600px]:mt-20' width={150} height={150} src='/avatar.png' />
-          <h1 className='text-4xl font-bold mt-5'>Douglas Yoshi</h1>
-          <AnimatedTabs />
-          {children}
-        </main>
+      <body className={`flex h-auto min-h-screen flex-col justify-between items-center selection:bg-red-500/90 ${mont.className} bg-gradient-to-bl from-orange-400 to-rose-400 text-white`}>
+        <AnimatedTabs />
+        {children}
+        <SocialLinks />
       </body>
     </html>
   )
